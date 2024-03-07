@@ -4,14 +4,22 @@ services:
   backend:
     build:
       context: ./backend
+    volumes:
+      - ./backend:/app/node_modules
+      - .:/app
     ports:
-      - "3001-3005:3001"
+      # - "3001-3005:3001"
+      - "3001:3001"
 
   frontend:
     build:
       context: ./frontend
+    volumes:
+      - ./frontend:/app/node_modules
+      - .:/app
     ports:
-      - "4000-4004:3000"
+      # - "4000-4004:3000"
+      - "3000:3000"
     depends_on:
       - backend
 
